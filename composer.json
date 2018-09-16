@@ -1,0 +1,19 @@
+{
+  "name": "zvanoz/ws-chat",
+  "description": "descr...",
+  "authors": [
+    {
+      "name": "Zaglyada Ivan",
+      "email": "ZVanoFD18@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ZVanoZ\\": "src"
+    }
+  },
+  "require": {
+    "php": ">=5.4.2",
+    "cboden/Ratchet": "dev-master"
+  }
+}

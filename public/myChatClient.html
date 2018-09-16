@@ -1,0 +1,68 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ws-chat/client</title>
+</head>
+<body>
+    <div>
+        <div id="log" style="height: 200px; border: 1px dashed gray;">
+            <div >
+
+            </div>
+        </div>
+        <div>
+            <button id='buttonConnect' onclick="window.ZVZ.connect()">Авторизироваться</button>
+            <input name="username" style="width: 30%"/>
+        </div>
+        <div>
+            <button id='buttonSend' onclick="window.ZVZ.sendMessage()">Отправить</button>
+            <input name="sendText" style="width: 50%"/>
+        </div>
+    </div>
+</body>
+<script>
+    window.ZVZ = {
+        ws : undefined,
+        connect : function () {
+            if (undefined !== this.ws){
+                return;
+            }
+            //this.ws = new WebSocket('ws://localhost:8080/echo');
+            this.ws = new WebSocket('ws://localhost:8080/chat');
+            this.ws.onmessage = this.onMessage.bind(this);
+            this.ws.onopen = this.onOpen.bind(this);
+            this.ws.onclose = this.onClose.bind(this);
+            this.ws.onerror = this.onError.bind(this);
+        },
+        onMessage : function (e) {
+            this.add2log(e.data);
+        },
+        onOpen : function (e) {
+            var username = document.getElementsByName("username")[0].value,
+                message = 'Hello, my name is ' + username;
+            this.sendMessage(message);
+            document.getElementById('buttonConnect').disabled = true;
+            document.getElementById('buttonSend').disabled = false;
+        },
+        onClose : function(event){
+          document.getElementById('buttonConnect').disabled = false;
+          document.getElementById('buttonSend').disabled = true;
+        },
+        onError : function(error) {
+            alert("Ошибка " + error.message);
+        },
+        sendMessage : function () {
+            var input = document.getElementsByName("sendText")[0],
+                value = input.value;
+            this.ws.send(value);
+            this.add2log(value);
+        }
+        ,
+        add2log : function (message) {
+            var newMsg = document.createElement('div');
+            newMsg.innerText = message;
+            document.getElementById('log').appendChild(newMsg);
+        }
+    }
+</script>
+</html>
