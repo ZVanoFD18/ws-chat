@@ -1,0 +1,10 @@
+<VirtualHost *:8080>
+    ServerName ws-chat.local
+    ServerAdmin admin@site.ua
+    DocumentRoot "C:/Users/MAK/Desktop/FD18/ws-chat/public"
+	<Directory "C:/Users/MAK/Desktop/FD18/ws-chat/public">
+		Options +Indexes
+		Allow from all
+		Require all granted
+	</Directory>
+</VirtualHost>
