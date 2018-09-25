@@ -27,6 +27,7 @@ class WsChat implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
+        // @type {Ratchet\WebSocket\WsConnection} $client
         foreach ($this->clients as $client) {
             if ($from != $client) {
                 $client->send($msg);

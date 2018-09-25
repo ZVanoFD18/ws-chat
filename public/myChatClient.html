@@ -27,8 +27,8 @@
             if (undefined !== this.ws){
                 return;
             }
-            //this.ws = new WebSocket('ws://localhost:8080/echo');
-            this.ws = new WebSocket('ws://localhost:8080/chat');
+            //this.ws = new WebSocket('ws://localhost:8081/echo');
+            this.ws = new WebSocket('ws://localhost:8081/chat');
             this.ws.onmessage = this.onMessage.bind(this);
             this.ws.onopen = this.onOpen.bind(this);
             this.ws.onclose = this.onClose.bind(this);
