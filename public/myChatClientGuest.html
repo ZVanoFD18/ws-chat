@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ws-chat/client</title>
+    <script defer src="vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script defer src="vendor/ZVLJS/Core.js"></script>
+    <script defer src="vendor/ZVLJS/Loader.js"></script>
+    <script defer src="vendor/ZVLJS/debug.js"></script>
+</head>
+<body>
+</body>
+<script>
+    let chat1 = undefined;
+    window.onload = function(){
+        ZVLJS.Loader.setBaseUrl(document.location.origin + '/vendor/ZVLJS').load(function () {
+            let chat1 = new ZVLJS.ws.chat.Guest({
+                url : 'ws://localhost:8080/chat'
+            });
+        }, this);
+    };
+</script>
+</html>
