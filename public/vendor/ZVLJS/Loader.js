@@ -3,6 +3,7 @@ ZVLJS.Loader = {
     baseUrl : document.location.origin + '/ZVLJS',
     scripts : [
          '/ws/WS.js',
+        '/ws/chat/Base.js',
          '/ws/chat/Guest.js'
     ],
     css : [

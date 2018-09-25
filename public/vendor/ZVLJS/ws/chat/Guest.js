@@ -5,31 +5,11 @@ ZVLJS.ws.chat.Guest = function (options) {
     ZVLJS.override(this, options);
     this.createDom();
 };
-ZVLJS.ws.chat.Guest.prototype.__proto__ = ZVLJS.ws.WS.prototype;
+ZVLJS.ws.chat.Guest.prototype.__proto__ = ZVLJS.ws.chat.Base.prototype;
 ZVLJS.override(ZVLJS.ws.chat.Guest.prototype, {
     domEl : undefined,
     template: 'WsChatGuest.html',
     css : 'WsChatGuest.css',
-    getUrlTemplateHtml : function(){
-        let url = ZVLJS.Loader.getBaseUrl() + '/templates/' + this.template;
-        return url;
-    },
-    getUrlTemplateCss : function(){
-        let url = ZVLJS.Loader.getBaseUrl() + '/templates/' + this.css;
-        return url;
-    },
-    createDom: function () {
-        let urlHtml = this.getUrlTemplateHtml(),
-            urlCss = this.getUrlTemplateCss();
-        ZVLJS.Loader.loadCss(urlCss);
-        ZVLJS.Loader.loadHtmlFragment(urlHtml, function (isSuccess, domEl) {
-            if (!isSuccess){
-                throw new Error('Error loading template from ' + urlHtml);
-            }
-            this.domEl = domEl;
-            this.initTemplate();
-        }, this);
-    },
     initTemplate(){
         $(this.domEl).find('[data-id="buttonConnect"]').disabled = false;
         $(this.domEl).find('[data-id="buttonConnect"]').click(ZVLJS.createDelegate(this.onClickConnect, this));
@@ -37,7 +17,8 @@ ZVLJS.override(ZVLJS.ws.chat.Guest.prototype, {
         $(this.domEl).find('[data-id="buttonSend"]').disabled = true;
         $(this.domEl).find('[data-id="buttonSend"]').click(ZVLJS.createDelegate(this.onClickSend, this));
         
-        document.body.appendChild(this.domEl);
+        // document.body.appendChild(this.domEl);
+        ZVLJS.ws.chat.Base.prototype.initTemplate.apply(this, arguments)
     },
     onClickConnect (){
         this.connect();
