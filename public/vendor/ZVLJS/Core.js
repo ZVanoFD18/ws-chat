@@ -1,5 +1,5 @@
 'use strict';
-window.ZVLJS = {
+var ZVLJS = {
     emptyFn() {
     },
     createNamespace(namespace) {
@@ -36,7 +36,13 @@ window.ZVLJS = {
         }
     },
     isArray(value) {
-        return typeof(value) === 'object';
+        return Array.isArray(value);
+    },
+    isBoolean: function(value) {
+        return typeof value === 'boolean';
+    },
+    isNumber: function(value) {
+        return typeof value === 'number' && isFinite(value);
     },
     isObject(value) {
         return typeof(value) === 'object';
@@ -45,7 +51,7 @@ window.ZVLJS = {
         return typeof(value) === 'string';
     },
     isDefined(value) {
-        return value !== undefined && !isNaN(value);
+        return typeof value !== 'undefined';
     }
 };
 ZVLJS.override(ZVLJS, {

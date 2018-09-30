@@ -14,7 +14,8 @@
     window.onload = function(){
         ZVLJS.Loader.setBaseUrl(document.location.origin + '/vendor/ZVLJS').load(function () {
             let chat1 = new ZVLJS.ws.chat.Guest({
-                url : 'ws://localhost:8080/chat'
+                url : 'ws://localhost:8081/chat',
+                chatRoom : 'consultation'
             });
         }, this);
     };
