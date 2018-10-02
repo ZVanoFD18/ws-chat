@@ -27,6 +27,9 @@ ZVLJS.override(ZVLJS.ws.chat.Guest.prototype, {
         $(this.domEl).find('[data-id="buttonSend"]').prop('disabled', true);
         $(this.domEl).find('[data-id="buttonSend"]').click(ZVLJS.createDelegate(this.onClickSend, this));
 
+        $(this.domEl).find('[data-id="title"]').onmousedown(ZVLJS.createDelegate(this.onClickTitle, this));
+
+
         // document.body.appendChild(this.domEl);
         //ZVLJS.ws.chat.Base.prototype.initTemplate.apply(this, arguments)
         ZVLJS.ws.chat.Guest.prototype.__proto__.initTemplate.apply(this, arguments);
@@ -90,6 +93,21 @@ ZVLJS.override(ZVLJS.ws.chat.Guest.prototype, {
             msgRow.innerText = json.text;
             return msgRow;
         });
+    },
+    /**
+     * https://learn.javascript.ru/drag-and-drop
+     * http://plnkr.co/edit/qwrhqAarRXyJCEeqCJGl?p=preview
+     * @param e
+     */
+    onClickTitle : function (e) {
+        let domEl = $(this.domEl).find('[data-id="title"]');
+        domEl .ondragstart = function() {
+            return false;
+        };
+        let startPos = elem.getBoundingClientRect();
+        let onmousemove = function (e) {
+            
+        }
     }
 });
 
