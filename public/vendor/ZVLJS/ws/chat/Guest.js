@@ -27,7 +27,7 @@ ZVLJS.override(ZVLJS.ws.chat.Guest.prototype, {
         $(this.domEl).find('[data-id="buttonSend"]').prop('disabled', true);
         $(this.domEl).find('[data-id="buttonSend"]').click(ZVLJS.createDelegate(this.onClickSend, this));
 
-        $(this.domEl).find('[data-id="title"]').onmousedown(ZVLJS.createDelegate(this.onClickTitle, this));
+        $(this.domEl).find('[data-id="title"]').mousedown(ZVLJS.createDelegate(this.onClickTitle, this));
 
 
         // document.body.appendChild(this.domEl);
@@ -100,11 +100,12 @@ ZVLJS.override(ZVLJS.ws.chat.Guest.prototype, {
      * @param e
      */
     onClickTitle : function (e) {
-        let domEl = $(this.domEl).find('[data-id="title"]');
+        let domEl = $(this.domEl).find('[data-id="title"]')[0];
         domEl .ondragstart = function() {
             return false;
         };
-        let startPos = elem.getBoundingClientRect();
+        let startPos = domEl.getBoundingClientRect();
+        
         let onmousemove = function (e) {
             
         }
