@@ -18,10 +18,24 @@
     border: 1px solid aqua;
     box-sizing: border-box;
 }
-.ws-chat-guest-title-text{
+.ws-chat-guest-title-logo{
     display: inline-block;
     position: absolute;
     left: 0px;
+    --right: 50px;
+    top: 0px;
+    width : 32px;
+    bottom: 0px;
+    cursor: help;
+    border: 1px solid red;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+    text-align: center;
+}
+.ws-chat-guest-title-text{
+    display: inline-block;
+    position: absolute;
+    left: 33px;
     right: 50px;
     top: 0px;
     bottom: 0px;
@@ -53,6 +67,7 @@
     cursor: pointer;
     border : 1px solid green;
     box-sizing: border-box;
+    background: url('../images/icons.jpg');
 }
 .ws-chat-guest-title-icon:hover{
     --background-color: rgba(255,255,255, .3);
@@ -63,4 +78,5 @@
     position: static;
     height: 200px;
     border: 1px dashed gray;
+    background: url('../images/icons.jpg');
 }

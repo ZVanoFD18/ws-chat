@@ -27,7 +27,7 @@ ZVLJS.override(ZVLJS.ws.chat.Guest.prototype, {
         $(this.domEl).find('[data-id="buttonSend"]').prop('disabled', true);
         $(this.domEl).find('[data-id="buttonSend"]').click(ZVLJS.createDelegate(this.onClickSend, this));
 
-        $(this.domEl).find('[data-id="title"]').mousedown(ZVLJS.createDelegate(this.onTitleMouseDown, this));
+        $(this.domEl).find('[data-id="title-text"]').mousedown(ZVLJS.createDelegate(this.onTitleMouseDown, this));
 
 
         // document.body.appendChild(this.domEl);
@@ -35,11 +35,11 @@ ZVLJS.override(ZVLJS.ws.chat.Guest.prototype, {
         ZVLJS.ws.chat.Guest.prototype.__proto__.initTemplate.apply(this, arguments);
     },
     onClickConnect() {
-        ZVLJS.debug('ZVLJS.ws.chat.Guest/onClickConnect', arguments)
+        ZVLJS.debug('ZVLJS.ws.chat.Guest/onClickConnect', arguments);
         this.connect();
     },
     onClickDisonnect() {
-        ZVLJS.debug('ZVLJS.ws.chat.Guest/onClickDisonnect', arguments)
+        ZVLJS.debug('ZVLJS.ws.chat.Guest/onClickDisonnect', arguments);
         alert('@TODO: disconnect');
     },
     onClickLogin() {
